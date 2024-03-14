@@ -1,24 +1,32 @@
 #pragma once
 #include <stdint.h> // 明确指定整数类型的大小
 
-int BuriedTest(); 
+#define BURIED_EXPORT __declspec(dllexport) // 用于指示编译器将函数或变量导出到动态链接库（DLL）中
 
-typedef struct Buried Buried;
-
-// 定义对外暴露的C接口,便于与其他语言进行交互
-struct BuriedConfig
+// 使用 extern "C" 声明，可以确保编译器按照 C 的调用约定而不是 C++ 的调用约定来处理这些函数
+// 从而使得它们可以在不同的编程语言之间进行交互
+extern "C"
 {
-    const char* host;
-    const char* topic;
-    const char* user_id;
-    const char* app_version;
-    const char* custom_data;
-};
+    BURIED_EXPORT int BuriedTest(); 
 
-Buried* Buried_Create(const char* work_dir);
+    typedef struct Buried Buried;
 
-void Buried_Destory(Buried* buried);
+    // 定义对外暴露的C接口,便于与其他语言进行交互
+    struct BuriedConfig
+    {
+        const char* host;
+        const char* topic;
+        const char* user_id;
+        const char* app_version;
+        const char* custom_data;
+    };
 
-int32_t Buried_Start(Buried* buried, BuriedConfig* config);
+    BURIED_EXPORT Buried* Buried_Create(const char* work_dir);
 
-int32_t Buried_Report(Buried* buried, const char* report_data, uint32_t priority);
+    BURIED_EXPORT void Buried_Destory(Buried* buried);
+
+    BURIED_EXPORT int32_t Buried_Start(Buried* buried, BuriedConfig* config);
+
+    BURIED_EXPORT int32_t Buried_Report(Buried* buried, const char* report_data, uint32_t priority);
+
+}
