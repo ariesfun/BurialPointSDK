@@ -7,7 +7,7 @@ set(BURIED_SRCS                 # 设置变量，埋点相关的源文件
 set(MODULE_NAME "Buried")       # 设置变量，用作模块的名称
 message(STATUS "libs ${LIBS}")  # 这个命令会输出一条状态信息，显示变量 ${LIBS} 的值
 
-include_directories(. module module/spdlog-1.12.0/include)
+include_directories(. module/spdlog-1.12.0/include)
 add_definitions(-DSPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_TRACE)   # 定义指定宏，以防导致Custom Formatting功能异常
 add_subdirectory(module/spdlog-1.12.0)
 

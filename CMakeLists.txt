@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.20)
 
 set(PROJECT_NAME "BuriedPoint")
-project(${PROJECT_NAME} VERSION 0.1.2)                     # CMake项目根目录的CMakeLists.txt都需要有这个
+project(${PROJECT_NAME} VERSION 0.1.3)                     # CMake项目根目录的CMakeLists.txt都需要有这个
 
 # 设置预处理器宏定义，用于忽略某些警告
+# PS: 编译警告来自于使用了 stdext::checked_array_iterator，这是一个非标准的扩，使用以下宏定义用于忽略警告
 add_compile_definitions(_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING)
 
 option(BUILD_BURIED_SHARED_LIBS "build shared library" ON) # 自定义开关选项，是否编译动态库(默认打开状态)

@@ -4,6 +4,8 @@
 TEST(BuriedBasicTest, Test1)
 {
     EXPECT_EQ(BuriedTest(), 1);
+
+    Buried_Create("E:/CPP ResumeProjects/LogTest");
 }
 
 
