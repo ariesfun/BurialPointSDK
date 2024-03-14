@@ -62,6 +62,10 @@ extern "C"
         {
             buried_config.app_version = config->app_version;
         }  
+        if(config->app_name)
+        {
+            buried_config.custom_data = config->custom_data;
+        }
         if(config->custom_data)
         {
             buried_config.custom_data = config->custom_data;
@@ -69,12 +73,12 @@ extern "C"
         return buried->Start(buried_config);     // 内部转为C++方式的调用 
     }
 
-    int32_t Buried_Report(Buried* buried, const char* report_data, uint32_t priority)
+    int32_t Buried_Report(Buried* buried, const char* title, const char* report_data, uint32_t priority)
     {
-        if(!buried || !report_data)
+        if(!buried || !title || !report_data)
         {
             return BuriedResult::kBuriedInvalidParam;
         }
-        return buried->Report(report_data, priority);
+        return buried->Report(title, report_data, priority);
     }
 }

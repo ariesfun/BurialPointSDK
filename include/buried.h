@@ -18,6 +18,7 @@ extern "C"
         const char* topic;
         const char* user_id;
         const char* app_version;
+        const char* app_name;
         const char* custom_data;
     };
 
@@ -27,6 +28,6 @@ extern "C"
 
     BURIED_EXPORT int32_t Buried_Start(Buried* buried, BuriedConfig* config);
 
-    BURIED_EXPORT int32_t Buried_Report(Buried* buried, const char* report_data, uint32_t priority);
+    BURIED_EXPORT int32_t Buried_Report(Buried* buried, const char* title, const char* report_data, uint32_t priority);
 
 }

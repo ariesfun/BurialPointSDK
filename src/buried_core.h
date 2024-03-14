@@ -24,6 +24,7 @@ public:
         const char* topic;
         const char* user_id;
         const char* app_version;
+        const char* app_name;
         const char* custom_data;
     };
 
@@ -31,7 +32,7 @@ public:
     Buried(const std::string& work_dir);
     ~Buried();
     BuriedResult Start(const Config& config);
-    BuriedResult Report(const char* report_data, uint32_t priority);
+    BuriedResult Report(const char* title, const char* report_data, uint32_t priority);
 
 private:
     void InitWorkPath_(const std::string& work_dir); // 初始化工作路径

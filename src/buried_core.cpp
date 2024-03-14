@@ -20,7 +20,7 @@ BuriedResult Buried::Start(const Config& config)
     return BuriedResult::kBuriedOk;
 }
 
-BuriedResult Buried::Report(const char* report_data, uint32_t priority)
+BuriedResult Buried::Report(const char* title, const char* report_data, uint32_t priority)
 {
     return BuriedResult::kBuriedOk;
 }
