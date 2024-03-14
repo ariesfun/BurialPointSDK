@@ -1,6 +1,9 @@
 include_guard(GLOBAL)           # 在全局范围内防止头文件被重复包含
 
-set(BURIED_SRCS buried.cpp)     # 设置变量，埋点相关的源文件
+set(BURIED_SRCS                 # 设置变量，埋点相关的源文件
+    buried.cpp
+    buried_core.cpp)
+
 set(MODULE_NAME "Buried")       # 设置变量，用作模块的名称
 message(STATUS "libs ${LIBS}")  # 这个命令会输出一条状态信息，显示变量 ${LIBS} 的值
 
