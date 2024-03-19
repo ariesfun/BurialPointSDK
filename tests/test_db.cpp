@@ -45,7 +45,8 @@ TEST(DbTest, Test1) {
   EXPECT_EQ(datas.size(), 3);
 
   for (int i = 0; i < 100; ++i) {
-    buried::BuriedDB::Data data{-1, i, i, "hello"};
+    uint64_t value = static_cast<uint64_t>(i); // int turn to uint64_t, for fix some warnings
+    buried::BuriedDB::Data data{-1, i, value, "hello"};
     db.InsertData(data);
   }
 
