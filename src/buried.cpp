@@ -4,6 +4,10 @@
 
 #include <spdlog/spdlog.h>
 
+#include <json/json.h>
+#include <json/value.h>
+#include <json/reader.h>
+
 extern "C"
 {
     int BuriedTest()
@@ -18,6 +22,19 @@ extern "C"
         spdlog::warn("This is a warning message");
         spdlog::error("This is an error message");
 
+        // JsonCpp功能测试
+        // 01.序列化一个json数据
+        Json::Value root;  // 定义子对象
+        root["id"] = 1001; // 添加数据
+        root["data"] = "hello world";
+        std::string request = root.toStyledString();             // 转为字符串，输出到控制台
+        std::cout << "request is " << request << std::endl;     
+        // 解析json字符串
+        Json::Value root2;
+        Json::Reader reader;
+        reader.parse(request, root2);
+        std::cout << "msg id is " << root2["id"] << " msg is " << root2["data"] << std::endl;
+        
         return 1;
     }
 
