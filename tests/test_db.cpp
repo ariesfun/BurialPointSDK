@@ -12,25 +12,26 @@ TEST(DbTest, Test1) {
 
   buried::BuriedDB db(db_path.string());
   {
-    buried::BuriedDB::Data data{-1, 1, 2, "hello1"};
+    // 第四个参数类型是 std::vector<char>
+    buried::BuriedDB::Data data{-1, 1, 2, std::vector<char>{'h', 'e', 'l', 'l', 'o', '1'}};
     db.InsertData(data);
   }
   auto datas = db.QueryData(10);
   EXPECT_EQ(datas.size(), 1);
   {
-    buried::BuriedDB::Data data{-1, 2, 3, "hello2"};
+    buried::BuriedDB::Data data{-1, 2, 3, std::vector<char>{'h', 'e', 'l', 'l', 'o', '2'}};
     db.InsertData(data);
   }
   datas = db.QueryData(10);
   EXPECT_EQ(datas.size(), 2);
   {
-    buried::BuriedDB::Data data{-1, 3, 4, "hello3"};
+    buried::BuriedDB::Data data{-1, 3, 4, std::vector<char>{'h', 'e', 'l', 'l', 'o', '3'}};
     db.InsertData(data);
   }
   datas = db.QueryData(10);
   EXPECT_EQ(datas.size(), 3);
   {
-    buried::BuriedDB::Data data{-1, 4, 5, "hello4"};
+    buried::BuriedDB::Data data{-1, 4, 5, std::vector<char>{'h', 'e', 'l', 'l', 'o', '4'}};
     db.InsertData(data);
   }
   datas = db.QueryData(10);
@@ -46,7 +47,7 @@ TEST(DbTest, Test1) {
 
   for (int i = 0; i < 100; ++i) {
     uint64_t value = static_cast<uint64_t>(i); // int turn to uint64_t, for fix some warnings
-    buried::BuriedDB::Data data{-1, i, value, "hello"};
+    buried::BuriedDB::Data data{-1, i, value, std::vector<char>{'h', 'e', 'l', 'l', 'o'}};
     db.InsertData(data);
   }
 
