@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 
 set(PROJECT_NAME "BuriedPoint")
-project(${PROJECT_NAME} VERSION 0.1.5)                     # CMake项目根目录的CMakeLists.txt都需要有这个
+project(${PROJECT_NAME} VERSION 0.1.6)                     # CMake项目根目录的CMakeLists.txt都需要有这个
 
 # 设置预处理器宏定义，用于忽略某些警告
 # PS: 编译警告来自于使用了 stdext::checked_array_iterator，这是一个非标准的扩，使用以下宏定义用于忽略警告
