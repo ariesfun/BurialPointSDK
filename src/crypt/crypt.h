@@ -32,8 +32,10 @@ namespace buried
         AESCrypt& operator=(const AESCrypt& other) = delete;                            // 禁止赋值操作符
 
     public:
-        static std::string GetKey(const std::string& salt, const std::string password); // 由盐值和密码得到Key
+        // 使用AES经典对称加密算法，该方法生成一个用于AES加密的密钥
+        static std::string GetKey(const std::string& salt, const std::string password); // 由盐值(随机值)和密码得到Key
 
+        // 对外暴露的方法
         std::string Encrypt(const std::string& input) override;
 
         std::string Decrypt(const std::string& input) override;
@@ -47,5 +49,4 @@ namespace buried
 
     };
 
-    
 } // namespace buried
