@@ -1,6 +1,7 @@
 include_guard(GLOBAL)           # 在全局范围内防止头文件被重复包含
 
 include_directories(. module module/spdlog-1.12.0/include moudle/boost module/jsoncpp-1.9.5/include module/mbedtls-3.5.0/include)
+add_definitions(-D_WIN32_WINNT=0x0601)
 add_definitions(-DBOOST_JSON_NO_LIB)   # 告诉编译器不要链接Boost.JSON库
 add_definitions(-DSPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_TRACE)   # 定义指定宏，以防导致Custom Formatting功能异常
 add_subdirectory(module/spdlog-1.12.0) # 会编译各自子目录的源码
@@ -10,11 +11,13 @@ add_subdirectory(module/mbedtls-3.5.0/library)
 set(DB_SRCS module/sqlite/sqlite3.c database/database.cpp)
 set(REPORT_SRCS report/http_report.cpp)
 set(CRYPT_SRCS crypt/crypt.cpp)
+set(CONTEXT_SRCS context/context.cpp)
 
 set(BURIED_SRCS                 # 设置变量，埋点相关的源文件
     ${DB_SRCS}
     ${REPORT_SRCS}
     ${CRYPT_SRCS}
+    ${CONTEXT_SRCS}
     buried.cpp
     buried_core.cpp)
 
