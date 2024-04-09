@@ -13,6 +13,9 @@ int main()
 {
     buried::Context::GetGlobalContext().Start();
 
+    // 两个strand，mainStrand和reportStrand
+    // 两个strand内的任务会并行执行，但是又会保证同一个strand中的任务顺序执行
+
     buried::Context::GetGlobalContext().GetMainStrand().post([]()
     {
         std::lock_guard<std::mutex> lock(coutMutex); // 使用互斥锁：以确保同一时间只有一个线程能够访问 std::cout
